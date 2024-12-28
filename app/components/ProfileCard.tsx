@@ -72,9 +72,6 @@ const ProfileCard: React.FC<HomeCardProps> = ({
         });
         if (response.status === 200) {
           setUserInformation(response.data);
-          console.log('Success', 'User data fetched successfully: ', response.data);
-        } else {
-          console.log('Error', 'User data not fetched: ', response);
         }
       } catch (error) {
         console.log('Error', 'An error occurred while trying to fetch user', error);
@@ -130,9 +127,6 @@ const ProfileCard: React.FC<HomeCardProps> = ({
         }));
         setEditingKey(null);
         setShowDatePicker(false);
-        console.log('Success', 'Field updated');
-      } else {
-        console.log('Error', 'Field not updated', response);
       }
     } catch (error) {
       console.log('Error', 'An error occurred while updating field', error);

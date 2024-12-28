@@ -65,7 +65,6 @@ const ExpenseList: React.FC<ExpenseListProps> = ({
   // Called when user taps "Edit" after swiping right
   const handleEdit = (expense: Expense) => {
     if (expense.category === 'income') {
-      console.log('Navigating to CreateIncome');
       navigation.navigate('CreateIncome', { expenseToEdit: expense });
     } else {
       navigation.navigate('NewExpense', { expenseToEdit: expense });

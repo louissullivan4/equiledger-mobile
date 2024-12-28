@@ -73,7 +73,6 @@ const CreateIncomeScreen = ({ navigation, user, route }: CreateExpenseScreenProp
           currency: 'EUR',
           receipt: null,
         });
-        console.log(expense)
         setBase64Image(null);
         setIsSuccess(false);
       }
@@ -180,7 +179,6 @@ const CreateIncomeScreen = ({ navigation, user, route }: CreateExpenseScreenProp
     try {
       let response;
       if (expenseToEdit) {
-        console.log(expenseToEdit.id)
         response = await axios.patch(`${SERVER_URL}/expenses/${expenseToEdit.id}`, payload, {
           headers: {
             Authorization: `Bearer ${user.token}`,
