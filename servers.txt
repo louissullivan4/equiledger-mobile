@@ -1,0 +1,1 @@
+"SERVER_URL": "https://equiledger-918489051228.europe-west4.run.app"
