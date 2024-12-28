@@ -320,6 +320,8 @@ const CreateExpenseScreen = ({ navigation, user, route }: CreateExpenseScreenPro
                       selectedValue={expense.category}
                       onValueChange={(value: string) => handleInputChange('category', value)}
                       items={categories}
+                      placeholder='Select a category...'
+                      bgColor='#F0F0F0'
                     />
                   </View>
 
@@ -342,6 +344,8 @@ const CreateExpenseScreen = ({ navigation, user, route }: CreateExpenseScreenPro
                           selectedValue={expense.currency}
                           onValueChange={(value: string) => handleInputChange('currency', value)}
                           items={currencyItems}
+                          placeholder='Select a currency...'
+                          bgColor='#F0F0F0'
                         />
                       </View>
                     </View>

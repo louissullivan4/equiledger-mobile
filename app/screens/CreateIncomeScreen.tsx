@@ -26,7 +26,6 @@ const SERVER_URL = Constants.expoConfig?.extra?.SERVER_URL ?? '';
 type CreateExpenseScreenProps = {
   navigation: StackNavigationProp<any>;
   user: { token: string };
-  // We allow optional route params: 'category' (for convenience) & 'expenseToEdit' (for editing)
   route: RouteProp<{ params: { category?: string; expenseToEdit?: any } }, 'params'>;
 };
 
@@ -314,6 +313,8 @@ const CreateIncomeScreen = ({ navigation, user, route }: CreateExpenseScreenProp
                           selectedValue={expense.currency}
                           onValueChange={(value: string) => handleInputChange('currency', value)}
                           items={currencyItems}
+                          placeholder="Select Currency"
+                          bgColor="#F0F0F0"
                         />
                       </View>
                     </View>

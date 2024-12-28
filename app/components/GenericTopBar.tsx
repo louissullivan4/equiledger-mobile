@@ -1,3 +1,4 @@
+import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 
 const screenHeight = Dimensions.get('window').height;
@@ -12,7 +13,9 @@ const GenericTopBar: React.FC<GenericTopBarProps> = ({ heightPercentage, title }
 
     return (
         <View style={[styles.container, { height }]}>
-            <Text style={styles.topText}>{ title }</Text>
+            <View style={styles.topContainer}>
+                <Text style={styles.topText}>{ title }</Text>
+            </View>
         </View>
     );
 };
@@ -28,6 +31,12 @@ const styles = StyleSheet.create({
         fontFamily: 'Inter', // Custom font
         fontWeight: 'bold',
     },
+    topContainer: {
+        paddingTop: 5,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    }
 });
 
 export default GenericTopBar;

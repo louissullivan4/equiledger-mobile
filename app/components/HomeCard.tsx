@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 20,
         justifyContent: 'center',
+        width: '95%',
     },
     icon: {
         marginRight: 8,

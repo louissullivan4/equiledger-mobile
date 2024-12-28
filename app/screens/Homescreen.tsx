@@ -3,6 +3,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { View, StyleSheet } from "react-native";
 import TopBar from '../components/TopBar';
 import HomeCard from "../components/HomeCard";
+import ContactCard from "../components/ContactCard";
 
 type User = {
     name: string;
@@ -23,7 +24,7 @@ type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 type Props = {
     navigation: HomeScreenNavigationProp;
     user: User
-    setUser: (user: User) => void
+    setUser: (user: User | null) => void
 };
 
 const HomeScreen: React.FC<Props> = ({ navigation, user, setUser }) => {
@@ -31,7 +32,8 @@ const HomeScreen: React.FC<Props> = ({ navigation, user, setUser }) => {
         <View style={styles.container}>
             <TopBar heightPercentage={9} user={user} navigation={navigation} setUser={setUser}/>
             <View style={styles.homecard}>
-                <HomeCard heightPercentage={50} navigation={navigation} />
+                <HomeCard heightPercentage={40} navigation={navigation} />
+                <ContactCard heightPercentage={20} navigation={navigation} />
             </View>
         </View>
     );

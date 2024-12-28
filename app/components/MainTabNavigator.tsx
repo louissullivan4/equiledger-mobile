@@ -8,8 +8,9 @@ import HomeScreen from '../screens/Homescreen';
 import ExpenseScreen from '../screens/Expensescreen';
 import CreateExpenseScreen from '../screens/CreateExpenseScreen';
 import IncomeScreen from '../screens/Incomescreen';
-import CreateIncome from '../screens/CreateIncomeScreen';
+import CreateIncomeScreen from '../screens/CreateIncomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import ContactScreen from '../screens/ContactScreen';
 
 type User = {
   name: string;
@@ -19,14 +20,13 @@ type User = {
 
 type MainTabNavigatorProps = {
   user: User;
-  setUser: (user: User) => void;
+  setUser: (user: User | null) => void;
 };
 
 const Tab = createBottomTabNavigator();
 const ExpenseStack = createStackNavigator();
 const IncomeStack = createStackNavigator();
 
-// --- Option B: Pass stack navigation to the screen via the render prop ---
 function ExpenseStackNavigator({ user }: { user: User }) {
   return (
     <ExpenseStack.Navigator screenOptions={{ headerShown: false }}>
@@ -42,7 +42,8 @@ function ExpenseStackNavigator({ user }: { user: User }) {
         {(stackProps) => (
           <CreateExpenseScreen 
             {...stackProps}
-            user={user} 
+            user={user}
+            navigation={stackProps.navigation}
           />
         )}
       </ExpenseStack.Screen>
@@ -63,9 +64,10 @@ function IncomeStackNavigator({ user }: { user: User }) {
       </IncomeStack.Screen>
       <IncomeStack.Screen name="CreateIncome">
         {(stackProps) => (
-          <CreateIncome 
+          <CreateIncomeScreen 
             {...stackProps} 
-            user={user} 
+            user={user}
+            navigation={stackProps.navigation}
           />
         )}
       </IncomeStack.Screen>
@@ -92,6 +94,9 @@ const MainTabNavigator: React.FC<MainTabNavigatorProps> = ({ user, setUser }) =>
               break;
             case 'Profile':
               iconName = 'person';
+              break;
+            case 'Contact':
+              iconName = 'phone';
               break;
             default:
               iconName = 'help-outline';
@@ -126,6 +131,10 @@ const MainTabNavigator: React.FC<MainTabNavigatorProps> = ({ user, setUser }) =>
 
       <Tab.Screen name="Profile">
         {(props) => <ProfileScreen {...props} user={user} setUser={setUser} />}
+      </Tab.Screen>
+
+      <Tab.Screen name="Contact">
+        {(props) => <ContactScreen {...props} user={user} setUser={setUser} />}
       </Tab.Screen>
     </Tab.Navigator>
   );
